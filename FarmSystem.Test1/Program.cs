@@ -50,8 +50,8 @@ Sheep has entered the farm
         }
 
 /***************************************************************************************************************
- Test Excercise 2
- If you have completed the first test excercise, you can continue with the second one
+ Test Exercise 2
+ If you have completed the first test exercise, you can continue with the second one
  Modify the program and EmydexFarmSystem.MakeNoise() method to get the below output
  Expected Test 2 Program Output
 
@@ -184,15 +184,21 @@ Emydex Farm is now empty
             sheep.Id = Guid.NewGuid().ToString();
             sheep.NoOfLegs = 4;
             farm.Enter(sheep);
-            
-            // Subscribe to the FarmEmpty Event
+
+            // Subscribe to FarmEmpty EventHandler longhand Way
+            // farm.FarmEmpty += Exercise4LongHand;
+            // Subscribe to FarmEmpty EventHandler shorthand Way
             farm.FarmEmpty += (s, e) => { Console.WriteLine("Emydex Farm is now empty"); };
-            
+
+
             farm.ReleaseAllAnimals();
             Console.ReadKey();
         }
 
-
+        static void Exercise4LongHand(object sender, EventArgs e) 
+        {
+            Console.WriteLine("Emydex Farm is now empty");
+        }
         
     }
 }

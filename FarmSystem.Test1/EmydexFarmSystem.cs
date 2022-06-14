@@ -18,10 +18,10 @@ namespace FarmSystem.Test1
         public void Enter(Animal animal)
         {
             
-            //DONETODO: Hold all the animals so it is available for future activities            
+            //TODO: Hold all the animals so it is available for future activities            
             AnimalQueue.Enqueue(animal);
 
-            //DONETODO Modify the code so that we can display the type of animal (cow, sheep etc) 
+            //TODO Modify the code so that we can display the type of animal (cow, sheep etc) 
             //Console.WriteLine("Animal has entered the Emydex farm");
             Console.WriteLine(animal.AnimalDescriptor + " has entered the Emydex farm");
             
@@ -58,9 +58,14 @@ namespace FarmSystem.Test1
             while (AnimalQueue.Count > 0)
                 Console.WriteLine(AnimalQueue.Dequeue().AnimalDescriptor + " has left the farm");
 
-            //TODO raise FarmEmpty Event
-            FarmEmpty?.Invoke(this,EventArgs.Empty);            
+            //TODO raise FarmEmpty Event            
+            if (FarmEmpty != null)
+                FarmEmpty.Invoke(this, EventArgs.Empty);
+            
+            //We could also do it using the null conditional operator as below;
+            //https://stackoverflow.com/questions/34298411/question-mark-syntax-on-method-call
+            //FarmEmpty?.Invoke(this,EventArgs.Empty);         
         }
-        
+
     }
 }
